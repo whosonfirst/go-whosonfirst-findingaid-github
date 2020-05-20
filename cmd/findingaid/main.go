@@ -1,14 +1,20 @@
 package main
 
 import (
+	_ "gocloud.dev/blob/fileblob"
+	_ "github.com/whosonfirst/go-cache-blob"
+	_ "github.com/whosonfirst/go-whosonfirst-index-git"	
+)
+
+import (
 	"context"
 	"flag"
-
-	"github.com/whosonfirst/go-cache"
+	"fmt"
 	"github.com/whosonfirst/go-whosonfirst-findingaid-github"
-	"github.com/whosonfirst/go-whosonfirst-findingaid/git"
+	"github.com/whosonfirst/go-whosonfirst-findingaid/repo"
 	"github.com/whosonfirst/go-whosonfirst-github/organizations"
 	"log"
+	"net/url"
 )
 
 func main() {
@@ -21,6 +27,8 @@ func main() {
 	not_forked := flag.Bool("not-forked", false, "Only include repositories that have not been forked")
 	token := flag.String("token", "", "A valid GitHub API access token")
 
+	cache_uri := flag.String("cache_uri", "gocache://", "...")
+	
 	flag.Parse()
 
 	list_opts := organizations.NewDefaultListOptions()
@@ -34,13 +42,13 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	c, err := cache.NewCache(ctx, "gocache://")
+	fa_query := url.Values{}
+	fa_query.Set("cache", *cache_uri)
+	fa_query.Set("indexer", "git://")
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fa, err := git.NewRepoFindingAidWithCache(ctx, c)
+	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
+	
+	fa, err := repo.NewRepoFindingAid(ctx, fa_uri)
 
 	if err != nil {
 		log.Fatal(err)
