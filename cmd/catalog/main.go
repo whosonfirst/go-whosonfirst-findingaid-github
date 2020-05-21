@@ -6,6 +6,7 @@ import (
 
 import (
 	_ "github.com/whosonfirst/go-cache-blob"
+	_ "github.com/whosonfirst/go-cache-sqlite"
 	_ "github.com/whosonfirst/go-whosonfirst-index-git"
 )
 

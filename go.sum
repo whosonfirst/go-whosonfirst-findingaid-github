@@ -28,6 +28,8 @@ github.com/aaronland/go-roster v0.0.1 h1:r1l4n1HfWvEtOXZvhfXX0Won9Xf6QJsigdUdzOt
 github.com/aaronland/go-roster v0.0.1/go.mod h1:AcovpxlG1XxJxX2Fjqlm63fEIBhCjEIBV4lP87FZDmI=
 github.com/aaronland/go-roster v0.0.2 h1:2Fu7v4VQLRLRL/Zgr6R9S5JxsW75Ab/K88QtMVX532s=
 github.com/aaronland/go-roster v0.0.2/go.mod h1:AcovpxlG1XxJxX2Fjqlm63fEIBhCjEIBV4lP87FZDmI=
+github.com/aaronland/go-sqlite v0.0.0-20200430154152-b9b3efa0a86a h1:+5cXk1p7Sv9uGPQ5PJCo1d25NC5R5xKsTc3wgh5bW6I=
+github.com/aaronland/go-sqlite v0.0.0-20200430154152-b9b3efa0a86a/go.mod h1:Qcp2kvO0mNq8Qy79HZBZArXaaY4K1zCXDUmuBa+/8g8=
 github.com/akrylysov/algnhsa v0.0.0-20190319020909-05b3d192e9a7/go.mod h1:HhzjNA0EjUWcwHTUMwqrpeAdIF3gRmpH0HpWx1hYJSc=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
@@ -121,6 +123,10 @@ github.com/mattn/go-colorable v0.1.2/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVc
 github.com/mattn/go-ieproxy v0.0.0-20190610004146-91bb50d98149/go.mod h1:31jz6HNzdxOmlERGGEc4v/dMssOfmp2p5bT/okiKFFc=
 github.com/mattn/go-isatty v0.0.8/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hdxcsrc5s=
 github.com/mattn/go-sqlite3 v1.10.0/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
+github.com/mattn/go-sqlite3 v1.11.0/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
+github.com/mattn/go-sqlite3 v2.0.2+incompatible/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
+github.com/mattn/go-sqlite3 v2.0.3+incompatible h1:gXHsfypPkaMZrKbD5209QV9jbUTJKjyR5WD3HYQSd+U=
+github.com/mattn/go-sqlite3 v2.0.3+incompatible/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/mitchellh/mapstructure v1.1.2/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
@@ -151,7 +157,10 @@ github.com/whosonfirst/go-cache v0.1.0 h1:w6o4pWT/q2q/uclV72EU3D9CCKOgU+w+D+GKpa
 github.com/whosonfirst/go-cache v0.1.0/go.mod h1:M5Iche+26mVKFph49/pxS5W4ULZ9Dr01mebPqswG8QU=
 github.com/whosonfirst/go-cache-blob v0.1.0 h1:xbBxAWVyJo+ydSIh5oZb7uIBCJEJv1ijy1VnO+EUUAY=
 github.com/whosonfirst/go-cache-blob v0.1.0/go.mod h1:RCbOA5QrazMfClbFBXYyMhcGhCODvfxaRmZ1RDQL2B4=
+github.com/whosonfirst/go-cache-sqlite v0.0.0-20200521161507-de601ee19aa1 h1:d4HPcMzZ6A/rWXYchsHp6e8BRZb+CdYFHK40xCSnUT0=
+github.com/whosonfirst/go-cache-sqlite v0.0.0-20200521161507-de601ee19aa1/go.mod h1:Xcvuap3ieBfBZ3LDLmNqNB0uWfMnteDnfwHaMXCt7jM=
 github.com/whosonfirst/go-spatialite v0.0.0-20180220171945-cb1d9ed624a8/go.mod h1:JnzadIex2v6ZyX6pLrjJ5CJ69e/ljYBCqxarHDMkMJ4=
+github.com/whosonfirst/go-spatialite v0.1.0/go.mod h1:w1O/DKimk4wiV+5d2BzWYnxvbdhMhkeU01cpfIeEorQ=
 github.com/whosonfirst/go-whosonfirst-cache v0.1.0/go.mod h1:P5Tx34j2M50qX/kTfXY516apwGzJGkFSBYQI7TGArKw=
 github.com/whosonfirst/go-whosonfirst-cli v0.1.0/go.mod h1:Edy+amD+fMq1QS1yxB3u8maA8I93q/LG7JRNh+fsdfc=
 github.com/whosonfirst/go-whosonfirst-crawl v0.1.0/go.mod h1:ZIYj6wdjduyJkWHwg4P3gNeLgWMW9uHZOn04eusRnLI=
@@ -180,6 +189,7 @@ github.com/whosonfirst/go-whosonfirst-sources v0.1.0 h1:JuKLa6KWke22jBfJ1pM9WQHo
 github.com/whosonfirst/go-whosonfirst-sources v0.1.0/go.mod h1:EUMHyGzUmqPPxlMmOp+28BFeoBdxxE0HCKRd67lkqGM=
 github.com/whosonfirst/go-whosonfirst-sqlite v0.0.2/go.mod h1:JmSK+NaXOzmZJXkzOdy2mHwMJvAbUzKw//B3dVr98H0=
 github.com/whosonfirst/go-whosonfirst-sqlite v0.1.0/go.mod h1:mm4RnFLe1ydCn1sItwU+Jfy2SYTHNp2zMSZasmM3/1M=
+github.com/whosonfirst/go-whosonfirst-sqlite v0.1.5/go.mod h1:JGveApxJW/FUeB+LQxxX0U8kSunVP7NiurXP/aUo/0g=
 github.com/whosonfirst/go-whosonfirst-uri v0.1.0 h1:JMlpam0x1hVrFBMTAPY3edIHz7azfMK8lLI2kM9BgbI=
 github.com/whosonfirst/go-whosonfirst-uri v0.1.0/go.mod h1:8eaDVcc4v+HHHEDaRbApdmhPwM4/JQllw2PktvZcPVs=
 github.com/whosonfirst/iso8601duration v0.0.0-20150204201828-8da3af7a2a61/go.mod h1:mT7JgXlZYn9Ct77XmFiCDqdp0vEgWvRjC9mnY0lT6Lo=

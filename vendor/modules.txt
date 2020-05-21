@@ -2,6 +2,9 @@
 github.com/aaronland/go-http-server
 # github.com/aaronland/go-roster v0.0.2
 github.com/aaronland/go-roster
+# github.com/aaronland/go-sqlite v0.0.0-20200430154152-b9b3efa0a86a
+github.com/aaronland/go-sqlite
+github.com/aaronland/go-sqlite/database
 # github.com/aws/aws-lambda-go v1.10.0
 github.com/aws/aws-lambda-go/events
 github.com/aws/aws-lambda-go/lambda
@@ -33,6 +36,8 @@ github.com/googleapis/gax-go
 github.com/jbenet/go-context/io
 # github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd
 github.com/kevinburke/ssh_config
+# github.com/mattn/go-sqlite3 v2.0.3+incompatible
+github.com/mattn/go-sqlite3
 # github.com/mitchellh/go-homedir v1.1.0
 github.com/mitchellh/go-homedir
 # github.com/patrickmn/go-cache v2.1.0+incompatible
@@ -50,6 +55,8 @@ github.com/whosonfirst/algnhsa
 github.com/whosonfirst/go-cache
 # github.com/whosonfirst/go-cache-blob v0.1.0
 github.com/whosonfirst/go-cache-blob
+# github.com/whosonfirst/go-cache-sqlite v0.0.0-20200521161507-de601ee19aa1
+github.com/whosonfirst/go-cache-sqlite
 # github.com/whosonfirst/go-whosonfirst-findingaid v0.0.0-20200520233829-b3897432b5e7
 github.com/whosonfirst/go-whosonfirst-findingaid
 github.com/whosonfirst/go-whosonfirst-findingaid/repo

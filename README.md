@@ -2,7 +2,7 @@
 
 ## Important
 
-Work in progress.
+Work in progress. Documentation to follow.
 
 ## Example
 
@@ -78,6 +78,14 @@ _This assumes your finding aid has already been cataloged (see above)._
   "path": "151/121/425/3/1511214253.geojson"
 }
 ```
+
+## Available caching layers
+
+Anything exposed by:
+
+* https://github.com/whosonfirst/go-cache
+* https://github.com/whosonfirst/go-cache-blob
+* https://github.com/whosonfirst/go-cache-sqlite
 
 ## See also
 
