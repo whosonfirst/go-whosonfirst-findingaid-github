@@ -63,6 +63,8 @@ _Error handling omitted for the sake of brevity._
 
 ### lookupd
 
+_This assumes your finding aid has already been cataloged (see above)._
+
 ```
 > go run -mod vendor cmd/lookupd/main.go \
 	-cache-uri 'file:///usr/local/whosonfirst/go-whosonfirst-findingaid-github/test'
