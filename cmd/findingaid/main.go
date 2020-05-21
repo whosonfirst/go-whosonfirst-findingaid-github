@@ -1,9 +1,9 @@
 package main
 
 import (
-	_ "gocloud.dev/blob/fileblob"
 	_ "github.com/whosonfirst/go-cache-blob"
-	_ "github.com/whosonfirst/go-whosonfirst-index-git"	
+	_ "github.com/whosonfirst/go-whosonfirst-index-git"
+	_ "gocloud.dev/blob/fileblob"
 )
 
 import (
@@ -27,8 +27,8 @@ func main() {
 	not_forked := flag.Bool("not-forked", false, "Only include repositories that have not been forked")
 	token := flag.String("token", "", "A valid GitHub API access token")
 
-	cache_uri := flag.String("cache_uri", "gocache://", "...")
-	
+	cache_uri := flag.String("cache-uri", "gocache://", "...")
+
 	flag.Parse()
 
 	list_opts := organizations.NewDefaultListOptions()
@@ -47,7 +47,7 @@ func main() {
 	fa_query.Set("indexer", "git://")
 
 	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
-	
+
 	fa, err := repo.NewRepoFindingAid(ctx, fa_uri)
 
 	if err != nil {
