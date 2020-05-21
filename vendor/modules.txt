@@ -49,6 +49,12 @@ github.com/src-d/gcfg
 github.com/src-d/gcfg/scanner
 github.com/src-d/gcfg/token
 github.com/src-d/gcfg/types
+# github.com/tidwall/gjson v1.6.0
+github.com/tidwall/gjson
+# github.com/tidwall/match v1.0.1
+github.com/tidwall/match
+# github.com/tidwall/pretty v1.0.0
+github.com/tidwall/pretty
 # github.com/whosonfirst/algnhsa v0.1.0
 github.com/whosonfirst/algnhsa
 # github.com/whosonfirst/go-cache v0.1.0
@@ -57,7 +63,7 @@ github.com/whosonfirst/go-cache
 github.com/whosonfirst/go-cache-blob
 # github.com/whosonfirst/go-cache-sqlite v0.0.0-20200521161507-de601ee19aa1
 github.com/whosonfirst/go-cache-sqlite
-# github.com/whosonfirst/go-whosonfirst-findingaid v0.0.0-20200520233829-b3897432b5e7
+# github.com/whosonfirst/go-whosonfirst-findingaid v0.0.0-20200521213610-300008ce8b4a
 github.com/whosonfirst/go-whosonfirst-findingaid
 github.com/whosonfirst/go-whosonfirst-findingaid/repo
 # github.com/whosonfirst/go-whosonfirst-github v0.1.1
