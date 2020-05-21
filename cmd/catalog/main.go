@@ -1,9 +1,12 @@
 package main
 
 import (
+	_ "gocloud.dev/blob/fileblob"
+)
+
+import (
 	_ "github.com/whosonfirst/go-cache-blob"
 	_ "github.com/whosonfirst/go-whosonfirst-index-git"
-	_ "gocloud.dev/blob/fileblob"
 )
 
 import (

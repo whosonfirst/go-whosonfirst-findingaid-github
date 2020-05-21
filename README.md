@@ -61,6 +61,23 @@ _Error handling omitted for the sake of brevity._
 }
 ```
 
+### lookupd
+
+```
+> go run -mod vendor cmd/lookupd/main.go \
+	-cache-uri 'file:///usr/local/whosonfirst/go-whosonfirst-findingaid-github/test'
+	
+2020/05/20 17:21:26 Listening on http://localhost:8080
+
+> curl -s 'http://localhost:8080?id=1511214253' | jq
+
+{
+  "id": 1511214253,
+  "repo": "sfomuseum-data-collection-classifications",
+  "path": "151/121/425/3/1511214253.geojson"
+}
+```
+
 ## See also
 
 * https://github.com/whosonfirst/go-whosonfirst-findingaid
