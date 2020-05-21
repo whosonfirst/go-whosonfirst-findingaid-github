@@ -10,6 +10,7 @@ Work in progress.
 package main
 
 import (
+	_ "github.com/whosonfirst/go-cache"
 	_ "github.com/whosonfirst/go-whosonfirst-index-git"
 )
 
