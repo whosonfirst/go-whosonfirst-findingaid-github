@@ -44,7 +44,7 @@ func NewLookupHandler(fa findingaid.FindingAid) http.Handler {
 			return
 		}
 
-		var fa_rsp repo.FindingAidResponse
+		var fa_rsp repo.FindingAidResponse // but what if some other type of response...TBD
 
 		err = fa.LookupID(ctx, id, &fa_rsp)
 
