@@ -26,13 +26,11 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	org := "whosonfirst-data"
-
-	list_opts := organizations.NewDefaultListOptions()
-
 	fa_uri := "repo://?cache=gocache://&indexer=git://"
-
 	fa, _ := repo.NewRepoFindingAid(ctx, fa_uri)
+
+	org := "whosonfirst-data"
+	list_opts := organizations.NewDefaultListOptions()
 
 	github.PopulateFindingAidForOrganization(ctx, fa, org, list_opts)
 }
