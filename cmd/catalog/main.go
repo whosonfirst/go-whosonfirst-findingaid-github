@@ -32,6 +32,7 @@ func main() {
 	token := flag.String("token", "", "A valid GitHub API access token")
 
 	cache_uri := flag.String("cache-uri", "gocache://", "...")
+	git_uri := flag.String("git-uri", "git://", "...")
 
 	flag.Parse()
 
@@ -48,7 +49,7 @@ func main() {
 
 	fa_query := url.Values{}
 	fa_query.Set("cache", *cache_uri)
-	fa_query.Set("indexer", "git://")
+	fa_query.Set("indexer", *git_uri)
 
 	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
 
