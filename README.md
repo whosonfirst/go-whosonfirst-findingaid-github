@@ -79,13 +79,37 @@ _This assumes your finding aid has already been cataloged (see above)._
 }
 ```
 
+### update
+
+Update an indexing catalog from a list of files. For example:
+
+```
+$> cd /usr/local/data/sfomuseum-data-flights-2020-05
+$> git log --name-only --pretty=format:'' HEAD^..HEAD | grep -v alt > filelist.txt
+
+$> cat filelist.txt | \
+	sed -e 's/^data\///' | \
+	go run -mod vendor cmd/catalog/main.go -stdin \
+	-reader-uri github://sfomuseum-data/sfomuseum-data-flights-2020-05 
+```
+
+_This tool will likely change still, specifically to make sure it works with the output of the [go-webhookd GitHubCommits](https://github.com/whosonfirst/go-webhookd#githubcommits) transformation._
+
 ## Available caching layers
 
-Anything exposed by:
+Anything registered by:
 
 * https://github.com/whosonfirst/go-cache
 * https://github.com/whosonfirst/go-cache-blob
 * https://github.com/whosonfirst/go-cache-sqlite
+
+## Available readers
+
+Anything registered by:
+
+* https://github.com/whosonfirst/go-reader
+* https://github.com/whosonfirst/go-reader-github
+* https://github.com/whosonfirst/go-reader-http
 
 ## See also
 
