@@ -5,7 +5,7 @@ import (
 )
 
 import (
-	_ "github.com/whosonfirst/go-cache-blob"
+	_ "github.com/aaronland/go-cloud-s3blob"	
 	_ "github.com/whosonfirst/go-cache-sqlite"
 	_ "github.com/whosonfirst/go-whosonfirst-index-git"
 )
@@ -13,10 +13,15 @@ import (
 import (
 	"context"
 	"flag"
+	"errors"
 	"fmt"
+	cache_blob "github.com/whosonfirst/go-cache-blob"	
 	"github.com/whosonfirst/go-whosonfirst-findingaid-github"
 	"github.com/whosonfirst/go-whosonfirst-findingaid/repo"
 	"github.com/whosonfirst/go-whosonfirst-github/organizations"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"gocloud.dev/blob"	
 	"log"
 	"net/url"
 )
@@ -36,6 +41,8 @@ func main() {
 
 	flag.Parse()
 
+	ctx := context.Background()
+	
 	list_opts := organizations.NewDefaultListOptions()
 
 	list_opts.Prefix = *prefix
@@ -44,7 +51,31 @@ func main() {
 	list_opts.NotForked = *not_forked
 	list_opts.AccessToken = *token
 
-	ctx, cancel := context.WithCancel(context.Background())
+	//
+	
+	before := func(asFunc func(interface{}) bool) error {
+
+		req := &s3manager.UploadInput{}
+		ok := asFunc(&req)
+
+		if !ok {
+			return errors.New("invalid s3 type")
+		}
+
+		req.ACL = aws.String("public-read")
+		return nil
+	}
+
+	wr_opts := &blob.WriterOptions{
+		BeforeWrite: before,
+		ContentType: "application/json",
+	}
+	
+	ctx = context.WithValue(ctx, cache_blob.BlobCacheOptionsKey("options"), wr_opts)
+
+	//
+	
+	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
 	fa_query := url.Values{}
