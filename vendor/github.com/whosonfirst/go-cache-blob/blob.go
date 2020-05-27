@@ -11,6 +11,8 @@ import (
 	"sync/atomic"
 )
 
+type BlobCacheOptionsKey string
+
 type BlobCache struct {
 	wof_cache.Cache
 	TTL       int64
@@ -70,7 +72,15 @@ func (c *BlobCache) Get(ctx context.Context, key string) (io.ReadCloser, error) 
 
 func (c *BlobCache) Set(ctx context.Context, key string, fh io.ReadCloser) (io.ReadCloser, error) {
 
-	bucket_wr, err := c.bucket.NewWriter(ctx, key, nil)
+	var wr_opts *blob.WriterOptions
+
+	v := ctx.Value(BlobCacheOptionsKey("options"))
+
+	if v != nil {
+		wr_opts = v.(*blob.WriterOptions)
+	}
+	
+	bucket_wr, err := c.bucket.NewWriter(ctx, key, wr_opts)
 
 	if err != nil {
 		return nil, err
