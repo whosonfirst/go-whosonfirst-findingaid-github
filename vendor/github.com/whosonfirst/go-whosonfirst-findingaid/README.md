@@ -1,69 +1,44 @@
 # go-whosonfirst-findingaid
 
-Work in progress.
+A Go language interface for building and querying finding aids of Who's On First documents.
 
-## Example
+## Documentation
 
-_Error handling omitted for the sake of brevity._
+Documentation is incomplete.
 
-```
-package main
+## FindingAids
 
-import (
-	"context"
-	"fmt"
-	"github.com/whosonfirst/go-whosonfirst-findingaid/repo"
-	_ "github.com/whosonfirst/go-whosonfirst-index/fs"	
-	"log"
-)
+Conceptually a finding aid consists of two parts:
 
-func main(){
+* An indexer which indexes (or catalogs) one or more Who's On First (WOF) records in to a cache. WOF records may be cataloged in full, truncated or otherwise manipulated according to logic implemented by the indexing or caching layers.
+* A cache of WOF records, in full or otherwise manipulated, that can resolved using a given WOF ID.
 
-	ctx := context.Background()
-	
-	wof_id := int64(1444838459)
+It is generally assumed that a complete catalog of WOF records will be assembled in advance of any query actions but that is not an absolute requirement. For an example of a lazy-loading catalog and query implementation, where all operations are performed at runtime, consult the documentation for the `readercache` chaching layer below.
 
-	wof_repo := "whosonfirst-data-admin-is"	
-	repo_url := fmt.Sprintf("fixtures/%s", wof_repo)
-	
-	cache_uri := "gocache://"	// https://github.com/whosonfirst/go-cache
-	indexer_uri := "repo://"	// https://github.com/whosonfirst/go-whosonfirst-index
-	
-	fa_uri := fmt.Sprintf("repo://?cache=%s&indexer=%s", cache_uri, indexer_uri)
-	
-	fa, _ := repo.NewRepoFindingAid(ctx, fa_uri)
-
-	fa.Index(ctx, repo_url)
-
-	var rsp repo.FindingAidResponse
-	
-	fa.LookupID(ctx, wof_id, &rsp)
-
-	if rsp.Repo != wof_repo {
-		log.Fatal("Invalid repo")
-	}
-}
-```
-
-Notes:
-
-* Eventually there will be a `findingaid.NewFindingAid` helper method.
-* The use of `whosonfirst/go-whosonfirst-index` packages will likely be replaced the [whosonfirst/go-whosonfirst-iterate](https://github.com/whosonfirst/go-whosonfirst-iterate) packages but that's still work in progress.
-
-## Interfaces
-
-### FindingAid
+There can be more than one kind of finding aid. Finding aids can implement their own internal logic for cataloging, caching and querying WOF records. A finding aid need only implement the following interface:
 
 ```
 type FindingAid interface {
-	Index(context.Context, ...string) error
+     Resolver
+     Indexer
+}
+
+type Indexer interface {
+	IndexURIs(context.Context, ...string) error
 	IndexReader(context.Context, io.Reader) error
-	LookupID(context.Context, int64, interface{}) error
+}
+
+type Resolver interface {
+	ResolveURI(context.Context, string) (interface{}, error)
 }
 ```
+
+Note the ambiguous return value (`interface{}`) for the `ResolveURI` method. Since it impossible to know in advance the response properties of any given finding aid it is left to developers to cast query results in to the appropriate type if necessary.
+
+...
 
 ## See also
 
 * https://github.com/whosonfirst/go-cache
-* https://github.com/whosonfirst/go-whosonfirst-index
+* https://github.com/whosonfirst/go-whosonfirst-iterate
 * https://en.wikipedia.org/wiki/Finding_aid
