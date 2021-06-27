@@ -21,16 +21,22 @@ import (
 	"github.com/whosonfirst/go-whosonfirst-github/organizations"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"gocloud.dev/blob"	
+	"gocloud.dev/blob"
+	"github.com/sfomuseum/go-flags/multi"
 	"log"
 	"net/url"
 )
 
 func main() {
 
+	var prefix multi.MultiString
+	flag.Var(&prefix, "prefix", "Limit repositories to only those with this prefix")
+	
+	var exclude multi.MultiString
+	flag.Var(&exclude, "exclude", "Exclude repositories with this prefix")
+	
 	org := flag.String("org", "whosonfirst-data", "The name of the organization to clone repositories from")
-	prefix := flag.String("prefix", "whosonfirst-data", "Limit repositories to only those with this prefix")
-	exclude := flag.String("exclude", "", "Exclude repositories with this prefix")
+
 	// updated_since := flag.String("updated-since", "", "A valid Unix timestamp or an ISO8601 duration string (months are currently not supported)")
 	forked := flag.Bool("forked", false, "Only include repositories that have been forked")
 	not_forked := flag.Bool("not-forked", false, "Only include repositories that have not been forked")
@@ -45,8 +51,8 @@ func main() {
 	
 	list_opts := organizations.NewDefaultListOptions()
 
-	list_opts.Prefix = *prefix
-	list_opts.Exclude = *exclude
+	list_opts.Prefix = prefix
+	list_opts.Exclude = exclude
 	list_opts.Forked = *forked
 	list_opts.NotForked = *not_forked
 	list_opts.AccessToken = *token
@@ -84,7 +90,7 @@ func main() {
 
 	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
 
-	fa, err := repo.NewRepoFindingAid(ctx, fa_uri)
+	fa, err := repo.NewIndexer(ctx, fa_uri)
 
 	if err != nil {
 		log.Fatal(err)

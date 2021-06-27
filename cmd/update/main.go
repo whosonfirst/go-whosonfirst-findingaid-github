@@ -63,7 +63,7 @@ func main() {
 
 	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
 
-	fa, err := repo.NewRepoFindingAid(ctx, fa_uri)
+	fa, err := repo.NewIndexer(ctx, fa_uri)
 
 	if err != nil {
 		log.Fatal(err)

@@ -4,12 +4,12 @@ go 1.16
 
 require (
 	github.com/aaronland/go-cloud-s3blob v0.1.0
-	github.com/aaronland/go-http-server v0.0.6
+	github.com/aaronland/go-http-server v0.0.6 // indirect
 	github.com/aws/aws-lambda-go v1.24.0
 	github.com/aws/aws-sdk-go v1.38.68
 	github.com/google/go-github/v27 v27.0.6
 	github.com/sfomuseum/go-flags v0.8.2
-	github.com/whosonfirst/go-cache v0.5.0
+	github.com/whosonfirst/go-cache v0.5.0 // indirect
 	github.com/whosonfirst/go-cache-blob v0.2.0
 	github.com/whosonfirst/go-cache-sqlite v0.0.1
 	github.com/whosonfirst/go-reader v0.5.0

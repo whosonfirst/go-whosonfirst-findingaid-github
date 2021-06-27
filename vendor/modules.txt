@@ -113,11 +113,14 @@ github.com/mattn/go-sqlite3
 github.com/mitchellh/go-homedir
 # github.com/patrickmn/go-cache v2.1.0+incompatible
 github.com/patrickmn/go-cache
+# github.com/rs/cors v1.7.0
+github.com/rs/cors
 # github.com/sergi/go-diff v1.0.0
 github.com/sergi/go-diff/diffmatchpatch
 # github.com/sfomuseum/go-flags v0.8.2
 ## explicit
 github.com/sfomuseum/go-flags/flagset
+github.com/sfomuseum/go-flags/multi
 # github.com/src-d/gcfg v1.4.0
 github.com/src-d/gcfg
 github.com/src-d/gcfg/scanner
@@ -156,7 +159,10 @@ github.com/whosonfirst/go-whosonfirst-crawl
 # github.com/whosonfirst/go-whosonfirst-findingaid v0.0.2
 ## explicit
 github.com/whosonfirst/go-whosonfirst-findingaid
+github.com/whosonfirst/go-whosonfirst-findingaid/application
+github.com/whosonfirst/go-whosonfirst-findingaid/application/lookupd
 github.com/whosonfirst/go-whosonfirst-findingaid/repo
+github.com/whosonfirst/go-whosonfirst-findingaid/www
 # github.com/whosonfirst/go-whosonfirst-github v0.3.1
 ## explicit
 github.com/whosonfirst/go-whosonfirst-github/organizations

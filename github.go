@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func PopulateFindingAidForOrganization(ctx context.Context, fa findingaid.FindingAid, org string, list_opts *organizations.ListOptions) error {
+func PopulateFindingAidForOrganization(ctx context.Context, fa findingaid.Indexer, org string, list_opts *organizations.ListOptions) error {
 
 	t1 := time.Now()
 
@@ -38,7 +38,7 @@ func PopulateFindingAidForOrganization(ctx context.Context, fa findingaid.Findin
 			log.Printf("Time to index %s: %v\n", repo_url, time.Since(t1))
 		}()
 
-		err := fa.Index(ctx, repo_url)
+		err := fa.IndexURIs(ctx, repo_url)
 
 		if err != nil {
 			log.Printf("Failed to index %s: %v\n", repo_url, err)
