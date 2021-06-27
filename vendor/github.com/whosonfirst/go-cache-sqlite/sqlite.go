@@ -6,8 +6,8 @@ import (
 	aa_sqlite "github.com/aaronland/go-sqlite"
 	aa_database "github.com/aaronland/go-sqlite/database"
 	"github.com/whosonfirst/go-cache"
+	"github.com/whosonfirst/go-ioutil"
 	"io"
-	"io/ioutil"
 	"net/url"
 	"strings"
 	"sync/atomic"
@@ -77,7 +77,7 @@ func (c *SQLiteCache) Close(ctx context.Context) error {
 	return c.db.Close()
 }
 
-func (c *SQLiteCache) Get(ctx context.Context, key string) (io.ReadCloser, error) {
+func (c *SQLiteCache) Get(ctx context.Context, key string) (io.ReadSeekCloser, error) {
 
 	select {
 	case <-ctx.Done():
@@ -108,23 +108,10 @@ func (c *SQLiteCache) Get(ctx context.Context, key string) (io.ReadCloser, error
 	atomic.AddInt64(&c.hits, 1)
 
 	fh := strings.NewReader(body)
-	cl := ioutil.NopCloser(fh)
-
-	return cl, nil
+	return ioutil.NewReadSeekCloser(fh)
 }
 
-func (c *SQLiteCache) Set(ctx context.Context, key string, fh io.ReadCloser) (io.ReadCloser, error) {
-
-	/*
-		body, err := ioutil.ReadAll(fh)
-
-		if err != nil {
-			return nil, err
-		}
-
-		br := bytes.NewReader(body)
-		cl := ioutil.NopCloser(br)
-	*/
+func (c *SQLiteCache) Set(ctx context.Context, key string, fh io.ReadSeekCloser) (io.ReadSeekCloser, error) {
 
 	rec := CacheRecord{
 		Key:  key,
@@ -137,7 +124,8 @@ func (c *SQLiteCache) Set(ctx context.Context, key string, fh io.ReadCloser) (io
 		return nil, err
 	}
 
-	return c.Get(ctx, key)
+	fh.Seek(0, 0)
+	return fh, nil
 }
 
 func (c *SQLiteCache) Unset(ctx context.Context, key string) error {

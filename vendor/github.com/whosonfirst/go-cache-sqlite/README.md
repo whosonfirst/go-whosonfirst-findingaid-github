@@ -25,7 +25,7 @@ func main() {
 	ctx := context.Background()
 	c, _ := cache.NewCache(ctx, "sqlite://?dsn=test.db")
 
-	c.Set(ctx, "hello", strings.NewReader("world"))
+	cache.SetString(ctx, c, "hello", "world")
 
 	r, _ := c.Get(ctx, "hello")
 	io.Copy(os.Stdout, r)

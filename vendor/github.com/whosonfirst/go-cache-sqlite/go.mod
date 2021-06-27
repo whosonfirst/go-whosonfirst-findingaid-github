@@ -1,9 +1,9 @@
 module github.com/whosonfirst/go-cache-sqlite
 
-go 1.12
+go 1.16
 
 require (
-	github.com/aaronland/go-sqlite v0.0.0-20200430154152-b9b3efa0a86a
-	github.com/whosonfirst/go-cache v0.1.0
-	github.com/whosonfirst/go-whosonfirst-sqlite v0.1.5 // indirect
+	github.com/aaronland/go-sqlite v0.0.1
+	github.com/whosonfirst/go-cache v0.5.0
+	github.com/whosonfirst/go-ioutil v1.0.0
 )
