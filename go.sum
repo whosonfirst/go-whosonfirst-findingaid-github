@@ -252,6 +252,8 @@ github.com/google/go-github/v27 v27.0.6 h1:oiOZuBmGHvrGM1X9uNUAUlLgp5r1UUO/M/Knb
 github.com/google/go-github/v27 v27.0.6/go.mod h1:/0Gr8pJ55COkmv+S/yPKCczSkUPIM/LnFyubufRNIS0=
 github.com/google/go-querystring v1.0.0 h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=
 github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
+github.com/google/go-querystring v1.1.0 h1:AnCroh3fv4ZBgVIf1Iwtovgjaw/GiKJo8M8yD/fhyJ8=
+github.com/google/go-querystring v1.1.0/go.mod h1:Kcdr2DB4koayq7X8pmAG4sNG59So17icRSOU623lUBU=
 github.com/google/go-replayers/grpcreplay v0.1.0/go.mod h1:8Ig2Idjpr6gifRd6pNVggX6TC1Zw6Jx74AKp7QNH2QE=
 github.com/google/go-replayers/grpcreplay v1.0.0/go.mod h1:8Ig2Idjpr6gifRd6pNVggX6TC1Zw6Jx74AKp7QNH2QE=
 github.com/google/go-replayers/httpreplay v0.1.0/go.mod h1:YKZViNhiGgqdBlUbI2MwGpq4pXxNmhJLPHQ7cv2b5no=
@@ -312,6 +314,8 @@ github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqx
 github.com/json-iterator/go v1.1.9/go.mod h1:KdQUCv79m/52Kvf8AW2vK1V8akMuk1QjK/uOdHXbAo4=
 github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024/go.mod h1:6v2b51hI/fHJwM22ozAgKL4VKDeJcHhJFhtBdhmNjmU=
 github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/XSXhF0NWZEnDohbsk=
+github.com/jtacoma/uritemplates v1.0.0 h1:xwx5sBF7pPAb0Uj8lDC1Q/aBPpOFyQza7OC705ZlLCo=
+github.com/jtacoma/uritemplates v1.0.0/go.mod h1:IhIICdE9OcvgUnGwTtJxgBQ+VrTrti5PcbLVSJianO8=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
 github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd h1:Coekwdh0v2wtGp9Gmz1Ze3eVRAWJMLokvN3QjdzCHLY=
 github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd/go.mod h1:CT57kijsi8u/K/BOFA39wgDQJ9CxiF4nAY/ojJ6r6mM=
@@ -432,6 +436,8 @@ github.com/whosonfirst/go-reader-github v0.2.0 h1:3L4PO81j2ru1Cl4sm8aLfY8viSssH/
 github.com/whosonfirst/go-reader-github v0.2.0/go.mod h1:KBs4H6VvhJApfSHVWTwYe8I3O065vs4511fanNVtR34=
 github.com/whosonfirst/go-reader-github v0.4.1 h1:99acJwTABJ7jfqPAnYi5Jh2y+f/oTkSR00hl2eChVog=
 github.com/whosonfirst/go-reader-github v0.4.1/go.mod h1:ib5yMY1xxbyEGdYzgBgMy/PNCGKMb1x4/lI2UguTFbs=
+github.com/whosonfirst/go-reader-github v0.4.2 h1:UOOeorUm0e5ryxG2043KadtnCT+f0nbiMbKReS7y5Vo=
+github.com/whosonfirst/go-reader-github v0.4.2/go.mod h1:+x9HvzlBwiyHHuHQ8dOzSRccvxFSRLApIMCSkzb77nQ=
 github.com/whosonfirst/go-reader-http v0.1.0 h1:zgrfHAD5y/jWk2xdoJuGeJr6ISxO+E/GqjxQ8R+j8Do=
 github.com/whosonfirst/go-reader-http v0.1.0/go.mod h1:He/0OcmeKl/zx7dDbI2bgVJPHj7TdlCBHL5ufQ+hnRw=
 github.com/whosonfirst/go-reader-http v0.2.2 h1:FITTF20IHcUT8UB/I8S3gnQPiA5L4WgyoN08/YZv5FQ=
@@ -457,6 +463,8 @@ github.com/whosonfirst/go-whosonfirst-findingaid v0.0.1 h1:pV9IqtqXXCfMTz4mwP7Zl
 github.com/whosonfirst/go-whosonfirst-findingaid v0.0.1/go.mod h1:K79hHew1Zjg3uYB6enxAI3z9+j6Pco6dWxXwC3UOhBE=
 github.com/whosonfirst/go-whosonfirst-findingaid v0.0.2 h1:b9eDsRZvDrHto8gZ8bVBVgaFkA1jnwXOuas4g3WCbMw=
 github.com/whosonfirst/go-whosonfirst-findingaid v0.0.2/go.mod h1:s9mHxs6MxsaW0heJOLEjY6hNdiI22kQaj7jalhRBp8Y=
+github.com/whosonfirst/go-whosonfirst-findingaid v0.0.4 h1:e9BSGwm849nl6kyy5jBRAdzDROOftWTmkP0dNuvF5NY=
+github.com/whosonfirst/go-whosonfirst-findingaid v0.0.4/go.mod h1:/jVL5PnEV/NImGZn6MJYKooCQA/ImKAVF7Pq5QhXfdE=
 github.com/whosonfirst/go-whosonfirst-flags v0.1.0/go.mod h1:bovMiQphaVhqemXFmNVf9Ts0tqnWtzHRFMUSKX+zTE8=
 github.com/whosonfirst/go-whosonfirst-github v0.1.1 h1:in6LE/VifCeBnH1ZStiNUr8MCQHVpFwaFvXgpjTwhW8=
 github.com/whosonfirst/go-whosonfirst-github v0.1.1/go.mod h1:Qu7gOik/KKRfmie8rgVufrD+PcITkLIf58Ho3EOHSxE=
@@ -634,6 +642,8 @@ golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84/go.mod h1:KelEdhl1UZF7XfJ
 golang.org/x/oauth2 v0.0.0-20210413134643-5e61552d6c78/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
 golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c h1:SgVl/sCtkicsS7psKkje4H9YtjdEl3xsYh7N+5TDHqY=
 golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
+golang.org/x/oauth2 v0.0.0-20210622215436-a8dc77f794b6 h1:pERGha6IgvMUdN6oJbwjZTt1ai5/O855Qmv1Bsc0v18=
+golang.org/x/oauth2 v0.0.0-20210622215436-a8dc77f794b6/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
 golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
