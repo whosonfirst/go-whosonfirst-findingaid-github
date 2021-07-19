@@ -97,6 +97,6 @@ Anything registered by:
 ## See also
 
 * https://github.com/whosonfirst/go-whosonfirst-findingaid
-* https://github.com/whosonfirst/go-whosonfirst-index-git
+* https://github.com/whosonfirst/go-whosonfirst-iterate-git
 * https://github.com/whosonfirst/go-whosonfirst-github
 * https://en.wikipedia.org/wiki/Finding_aid

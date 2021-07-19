@@ -132,7 +132,7 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 			err := cb(r)
 
 			if err != nil {
-				return fmt.Errorf("Failed to invoke callback for '%v', %w", r, err)
+				return fmt.Errorf("Failed to invoke callback for '%s', %w", *r.Name, err)
 			}
 
 		}

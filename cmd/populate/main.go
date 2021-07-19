@@ -34,14 +34,12 @@ func main() {
 
 	org := flag.String("org", "whosonfirst-data", "The name of the organization to clone repositories from")
 
-	// updated_since := flag.String("updated-since", "", "A valid Unix timestamp or an ISO8601 duration string (months are currently not supported)")
-
 	forked := flag.Bool("forked", false, "Only include repositories that have been forked")
 	not_forked := flag.Bool("not-forked", false, "Only include repositories that have not been forked")
 	token := flag.String("token", "", "A valid GitHub API access token")
-	
-	cache_uri := flag.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache URI.")
-	git_uri := flag.String("git-uri", "git://", "A valid whosonfirst/go-whosonfirst-iterate/emitter URI.")
+
+	cache_uri := flag.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache.Cache URI.")
+	git_uri := flag.String("git-uri", "git://", "A valid whosonfirst/go-whosonfirst-iterate.Emitter URI.")
 
 	flag.Parse()
 

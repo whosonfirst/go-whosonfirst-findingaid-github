@@ -1,3 +1,4 @@
+// update will update an existing finding aid from a list of filenames.
 package main
 
 /*
@@ -23,13 +24,10 @@ import (
 	"flag"
 	"fmt"
 	"github.com/aws/aws-lambda-go/lambda"
-	// "github.com/aws/aws-sdk-go/aws"
-	// "github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/sfomuseum/go-flags/flagset"
 	cache_blob "github.com/whosonfirst/go-cache-blob"
 	"github.com/whosonfirst/go-reader"
 	"github.com/whosonfirst/go-whosonfirst-findingaid/repo"
-	// "gocloud.dev/blob"
 	"io"
 	"log"
 	"net/url"
@@ -44,7 +42,7 @@ func main() {
 	cache_uri := fs.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache.Cache URI.")
 	reader_uri := fs.String("reader-uri", "", "A valid whosonfirst/go-reader.Reader URI.")
 
-	mode := fs.String("mode", "cli", "...")
+	mode := fs.String("mode", "cli", "Valid options are: cli, lambda, stdin.")
 
 	flagset.Parse(fs)
 
@@ -85,8 +83,6 @@ func main() {
 	}
 
 	process := func(ctx context.Context, r reader.Reader, paths ...string) error {
-
-		// ctx = context.WithValue(ctx, cache_blob.BlobCacheOptionsKey("options"), wr_opts)
 
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()

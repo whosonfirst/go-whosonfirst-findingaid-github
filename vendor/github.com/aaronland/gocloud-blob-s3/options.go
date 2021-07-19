@@ -24,7 +24,7 @@ func SetWriterOptionsWithContext(ctx context.Context, ctx_key interface{}, opt_k
 
 	v := ctx.Value(ctx_key)
 
-	if wr_opts == nil {
+	if v == nil {
 		wr_opts = &blob.WriterOptions{}
 	} else {
 		wr_opts = v.(*blob.WriterOptions)
