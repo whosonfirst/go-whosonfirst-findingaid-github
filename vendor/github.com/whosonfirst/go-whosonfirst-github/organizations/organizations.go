@@ -1,6 +1,7 @@
 package organizations
 
 import (
+	"fmt"
 	"github.com/google/go-github/v27/github"
 	"github.com/whosonfirst/go-whosonfirst-github/util"
 	"log"
@@ -61,6 +62,13 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 
 	for {
 
+		select {
+		case <-ctx.Done():
+			break
+		default:
+			// pass
+		}
+
 		possible, resp, err := client.Repositories.ListByOrg(ctx, org, gh_opts)
 
 		if err != nil {
@@ -69,30 +77,37 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 
 		for _, r := range possible {
 
-			has_prefix := false
-			is_excluded := false
+			if len(opts.Prefix) > 0 {
 
-			for _, prefix := range opts.Prefix {
-				if strings.HasPrefix(*r.Name, prefix) {
-					has_prefix = true
-					break
+				has_prefix := false
+
+				for _, prefix := range opts.Prefix {
+					if strings.HasPrefix(*r.Name, prefix) {
+						has_prefix = true
+						break
+					}
+				}
+
+				if !has_prefix {
+					continue
 				}
 			}
 
-			if !has_prefix {
-				continue
-			}
+			if len(opts.Exclude) > 0 {
 
-			for _, prefix := range opts.Exclude {
+				is_excluded := false
 
-				if strings.HasPrefix(*r.Name, prefix) {
-					is_excluded = true
-					break
+				for _, prefix := range opts.Exclude {
+
+					if strings.HasPrefix(*r.Name, prefix) {
+						is_excluded = true
+						break
+					}
 				}
-			}
 
-			if is_excluded {
-				continue
+				if is_excluded {
+					continue
+				}
 			}
 
 			if opts.Forked && !*r.Fork {
@@ -117,7 +132,7 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 			err := cb(r)
 
 			if err != nil {
-				return err
+				return fmt.Errorf("Failed to invoke callback for '%v', %w", r, err)
 			}
 
 		}

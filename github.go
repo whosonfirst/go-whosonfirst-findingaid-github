@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+// PopulateFindingAidForOrganization will update a go-whosonfirst-findingaid index (fa) derived from one or more GitHub repositories defined according to
+// criteria in 'org' and 'list_opts'
 func PopulateFindingAidForOrganization(ctx context.Context, fa findingaid.Indexer, org string, list_opts *organizations.ListOptions) error {
 
 	t1 := time.Now()

@@ -1,5 +1,7 @@
 # go-whosonfirst-findingaid-github
 
+Go package providing tools and methods for working with go-whosonfirst-findingaid indices derived from one or more GitHub repositories.
+
 ## Important
 
 Work in progress. Documentation to follow.
@@ -40,7 +42,7 @@ _Error handling omitted for the sake of brevity._
 
 ## Tools
 
-### catalog
+### populate
 
 ```
 > go run -mod vendor cmd/catalog/main.go \
@@ -53,25 +55,6 @@ _Error handling omitted for the sake of brevity._
 2020/05/20 16:53:07 Time to index all: 1m0.292242361s
 
 > cat test/1511214253 | jq
-{
-  "id": 1511214253,
-  "repo": "sfomuseum-data-collection-classifications",
-  "path": "151/121/425/3/1511214253.geojson"
-}
-```
-
-### lookupd
-
-_This assumes your finding aid has already been cataloged (see above)._
-
-```
-> go run -mod vendor cmd/lookupd/main.go \
-	-cache-uri 'file:///usr/local/whosonfirst/go-whosonfirst-findingaid-github/test'
-	
-2020/05/20 17:21:26 Listening on http://localhost:8080
-
-> curl -s 'http://localhost:8080?id=1511214253' | jq
-
 {
   "id": 1511214253,
   "repo": "sfomuseum-data-collection-classifications",

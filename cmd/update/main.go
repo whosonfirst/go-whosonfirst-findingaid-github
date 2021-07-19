@@ -11,7 +11,7 @@ go run -mod vendor cmd/update/main.go -reader-uri github://sfomuseum-data/sfomus
 */
 
 import (
-	_ "github.com/aaronland/go-cloud-s3blob"
+	"github.com/aaronland/gocloud-blob-s3"
 	_ "github.com/whosonfirst/go-reader-github"
 	_ "github.com/whosonfirst/go-reader-http"
 )
@@ -20,17 +20,16 @@ import (
 	"bufio"
 	"context"
 	"encoding/csv"
-	"errors"
 	"flag"
 	"fmt"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	// "github.com/aws/aws-sdk-go/aws"
+	// "github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/sfomuseum/go-flags/flagset"
 	cache_blob "github.com/whosonfirst/go-cache-blob"
 	"github.com/whosonfirst/go-reader"
 	"github.com/whosonfirst/go-whosonfirst-findingaid/repo"
-	"gocloud.dev/blob"
+	// "gocloud.dev/blob"
 	"io"
 	"log"
 	"net/url"
@@ -59,7 +58,7 @@ func main() {
 
 	fa_query := url.Values{}
 	fa_query.Set("cache", *cache_uri)
-	fa_query.Set("indexer", "null://")
+	fa_query.Set("iterator", "null://")
 
 	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
 
@@ -69,30 +68,25 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// START OF please put me in a common function to share with
-	// bulk cataloging (20200526/thisisaaronland)
+	ctx_key := cache_blob.BlobCacheOptionsKey("options")
 
-	before := func(asFunc func(interface{}) bool) error {
-
-		req := &s3manager.UploadInput{}
-		ok := asFunc(&req)
-
-		if !ok {
-			return errors.New("invalid s3 type")
-		}
-
-		req.ACL = aws.String("public-read")
-		return nil
+	ctx_opts := map[string]interface{}{
+		"ACL":         "public-read",
+		"ContentType": "application/json",
 	}
 
-	wr_opts := &blob.WriterOptions{
-		BeforeWrite: before,
-		ContentType: "application/json",
+	for k, v := range ctx_opts {
+
+		ctx, err = s3blob.SetWriterOptionsWithContext(ctx, ctx_key, k, v)
+
+		if err != nil {
+			log.Fatalf("Failed to set writer options for '%s', %v", k, err)
+		}
 	}
 
 	process := func(ctx context.Context, r reader.Reader, paths ...string) error {
 
-		ctx = context.WithValue(ctx, cache_blob.BlobCacheOptionsKey("options"), wr_opts)
+		// ctx = context.WithValue(ctx, cache_blob.BlobCacheOptionsKey("options"), wr_opts)
 
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
@@ -195,8 +189,7 @@ func main() {
 				}
 
 				if len(row) != 3 {
-					msg := fmt.Sprintf("Invalid row, %v", row)
-					return errors.New(msg)
+					return fmt.Errorf("Invalid row, %v", row)
 				}
 
 				repo := row[1]
