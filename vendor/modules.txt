@@ -1,6 +1,6 @@
-# github.com/aaronland/go-aws-session v0.0.4
+# github.com/aaronland/go-aws-session v0.0.6
 github.com/aaronland/go-aws-session
-# github.com/aaronland/go-cloud-s3blob v0.1.0
+# github.com/aaronland/go-cloud-s3blob v0.2.1
 ## explicit
 github.com/aaronland/go-cloud-s3blob
 # github.com/aaronland/go-http-server v0.0.6
@@ -12,16 +12,16 @@ github.com/aaronland/go-roster
 # github.com/aaronland/go-sqlite v0.0.1
 github.com/aaronland/go-sqlite
 github.com/aaronland/go-sqlite/database
-# github.com/aaronland/go-string v0.1.1
+# github.com/aaronland/go-string v0.1.2
 github.com/aaronland/go-string/dsn
-# github.com/aws/aws-lambda-go v1.24.0
+# github.com/aws/aws-lambda-go v1.25.0
 ## explicit
 github.com/aws/aws-lambda-go/events
 github.com/aws/aws-lambda-go/lambda
 github.com/aws/aws-lambda-go/lambda/handlertrace
 github.com/aws/aws-lambda-go/lambda/messages
 github.com/aws/aws-lambda-go/lambdacontext
-# github.com/aws/aws-sdk-go v1.38.68
+# github.com/aws/aws-sdk-go v1.40.3
 ## explicit
 github.com/aws/aws-sdk-go/aws
 github.com/aws/aws-sdk-go/aws/arn
@@ -145,7 +145,7 @@ github.com/whosonfirst/go-cache-blob
 github.com/whosonfirst/go-cache-sqlite
 # github.com/whosonfirst/go-ioutil v1.0.0
 github.com/whosonfirst/go-ioutil
-# github.com/whosonfirst/go-reader v0.5.0
+# github.com/whosonfirst/go-reader v0.7.0
 ## explicit
 github.com/whosonfirst/go-reader
 # github.com/whosonfirst/go-reader-github v0.4.2
@@ -156,7 +156,7 @@ github.com/whosonfirst/go-reader-github
 github.com/whosonfirst/go-reader-http
 # github.com/whosonfirst/go-whosonfirst-crawl v0.2.1
 github.com/whosonfirst/go-whosonfirst-crawl
-# github.com/whosonfirst/go-whosonfirst-findingaid v0.0.4
+# github.com/whosonfirst/go-whosonfirst-findingaid v0.0.7
 ## explicit
 github.com/whosonfirst/go-whosonfirst-findingaid
 github.com/whosonfirst/go-whosonfirst-findingaid/application
@@ -172,7 +172,7 @@ github.com/whosonfirst/go-whosonfirst-index
 # github.com/whosonfirst/go-whosonfirst-index-git v0.0.5
 ## explicit
 github.com/whosonfirst/go-whosonfirst-index-git
-# github.com/whosonfirst/go-whosonfirst-iterate v1.1.2
+# github.com/whosonfirst/go-whosonfirst-iterate v1.2.0
 github.com/whosonfirst/go-whosonfirst-iterate/emitter
 github.com/whosonfirst/go-whosonfirst-iterate/filters
 github.com/whosonfirst/go-whosonfirst-iterate/iterator
@@ -236,7 +236,7 @@ golang.org/x/crypto/ssh
 golang.org/x/crypto/ssh/agent
 golang.org/x/crypto/ssh/internal/bcrypt_pbkdf
 golang.org/x/crypto/ssh/knownhosts
-# golang.org/x/net v0.0.0-20210505214959-0714010a04ed
+# golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
 golang.org/x/net/http/httpguts
