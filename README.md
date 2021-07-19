@@ -81,7 +81,7 @@ _This tool will likely change still, specifically to make sure it works with the
 ## Docker
 
 ```
-$> docker build -t findingaid-github .
+$> docker build -t findingaid-populate .
 
 ...time passes, docker builds
 

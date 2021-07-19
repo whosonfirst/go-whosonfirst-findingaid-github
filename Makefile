@@ -3,4 +3,4 @@ cli:
 	go build -mod vendor -o bin/update cmd/update/main.go
 
 docker:
-	docker build -t findingaid-github .
+	docker build -t findingaid-populate .
