@@ -78,6 +78,34 @@ $> cat filelist.txt | \
 
 _This tool will likely change still, specifically to make sure it works with the output of the [go-webhookd GitHubCommits](https://github.com/whosonfirst/go-webhookd#githubcommits) transformation._
 
+## Docker
+
+```
+$> docker build -t findingaid-github .
+
+...time passes, docker builds
+
+$> docker run findingaid-github /usr/local/bin/populate -h
+
+Usage of /usr/local/bin/populate:
+  -cache-uri string
+    	A valid whosonfirst/go-cache.Cache URI. (default "gocache://")
+  -exclude value
+    	Exclude repositories with this prefix
+  -forked
+    	Only include repositories that have been forked
+  -git-uri string
+    	A valid whosonfirst/go-whosonfirst-iterate.Emitter URI. (default "git://")
+  -not-forked
+    	Only include repositories that have not been forked
+  -org string
+    	The name of the organization to clone repositories from (default "whosonfirst-data")
+  -prefix value
+    	Limit repositories to only those with this prefix
+  -token string
+    	A valid GitHub API access token
+```
+
 ## Available caching layers
 
 Anything registered by:
