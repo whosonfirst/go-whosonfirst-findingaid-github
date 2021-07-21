@@ -22,6 +22,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst-github/organizations"
 	"log"
 	"net/url"
+	"strings"
 )
 
 func main() {
@@ -39,7 +40,7 @@ func main() {
 	token := flag.String("token", "", "A valid GitHub API access token")
 
 	cache_uri := flag.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache URI string.")
-	iterator_uri := flag.String("iterator-uri", "repo://", "A valid whosonfirst/go-whosonfirst-iterate URI string.")
+	iterator_uri := flag.String("iterator-uri", "git://", "A valid whosonfirst/go-whosonfirst-iterate URI string.")
 
 	findingaid_uri := flag.String("findingaid-uri", "repo://?cache={cache_uri}&iterator={iterator_uri}", "A valid whosonfirst/go-whosonfirst-findingaid URI string.")
 
@@ -58,19 +59,24 @@ func main() {
 
 	//
 
-	ctx_key := cache_blob.BlobCacheOptionsKey("options")
-
-	ctx_opts := map[string]interface{}{
-		"ACL":         "public-read",
-		"ContentType": "application/json",
+	var err error
+	
+	if strings.HasPrefix(*cache_uri, "s3blob://"){
+	
+		ctx_key := cache_blob.BlobCacheOptionsKey("options")
+		
+		ctx_opts := map[string]interface{}{
+			"ACL":         "public-read",
+			"ContentType": "application/json",
+		}
+		
+		ctx, err = s3blob.SetWriterOptionsWithContextAndMap(ctx, ctx_key, ctx_opts)
+		
+		if err != nil {
+			log.Fatalf("Failed to set writer options, %v", err)
+		}
 	}
-
-	ctx, err := s3blob.SetWriterOptionsWithContextAndMap(ctx, ctx_key, ctx_opts)
-
-	if err != nil {
-		log.Fatalf("Failed to set writer options, %v", err)
-	}
-
+	
 	//
 
 	ctx, cancel := context.WithCancel(ctx)
@@ -99,7 +105,6 @@ func main() {
 
 	fa_uri.RawQuery = fa_q.Encode()
 
-	log.Println(fa_uri.String())
 	fa, err := repo.NewIndexer(ctx, fa_uri.String())
 
 	if err != nil {
@@ -109,6 +114,6 @@ func main() {
 	err = github.PopulateFindingAidForOrganization(ctx, fa, *org, list_opts)
 
 	if err != nil {
-		log.Fatal("Failed to populate finding aid, %v", err)
+		log.Fatalf("Failed to populate finding aid, %v", err)
 	}
 }
