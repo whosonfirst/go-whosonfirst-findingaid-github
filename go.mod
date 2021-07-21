@@ -12,7 +12,7 @@ require (
 	github.com/whosonfirst/go-reader v0.7.0
 	github.com/whosonfirst/go-reader-github v0.4.2
 	github.com/whosonfirst/go-reader-http v0.2.2
-	github.com/whosonfirst/go-whosonfirst-findingaid v0.0.7
+	github.com/whosonfirst/go-whosonfirst-findingaid v0.0.8
 	github.com/whosonfirst/go-whosonfirst-github v0.3.4
 	github.com/whosonfirst/go-whosonfirst-iterate-git v1.0.2
 	gocloud.dev v0.23.0

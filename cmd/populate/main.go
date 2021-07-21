@@ -13,7 +13,7 @@ import (
 import (
 	"context"
 	"flag"
-	"fmt"
+	_ "fmt"
 	"github.com/aaronland/gocloud-blob-s3"
 	"github.com/sfomuseum/go-flags/multi"
 	cache_blob "github.com/whosonfirst/go-cache-blob"
@@ -38,9 +38,12 @@ func main() {
 	not_forked := flag.Bool("not-forked", false, "Only include repositories that have not been forked")
 	token := flag.String("token", "", "A valid GitHub API access token")
 
-	cache_uri := flag.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache.Cache URI.")
-	git_uri := flag.String("git-uri", "git://", "A valid whosonfirst/go-whosonfirst-iterate.Emitter URI.")
+	cache_uri := flag.String("cache-uri", "gocache://", "A valid whosonfirst/go-cache URI string.")
+	iterator_uri := flag.String("iterator-uri", "repo://", "A valid whosonfirst/go-whosonfirst-iterate URI string.")
 
+	findingaid_uri := flag.String("findingaid-uri", "repo://?cache={cache_uri}&iterator={iterator_uri}", "A valid whosonfirst/go-whosonfirst-findingaid URI string.")
+
+	
 	flag.Parse()
 
 	ctx := context.Background()
@@ -73,13 +76,31 @@ func main() {
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	fa_query := url.Values{}
-	fa_query.Set("cache", *cache_uri)
-	fa_query.Set("iterator", *git_uri)
 
-	fa_uri := fmt.Sprintf("repo://?%s", fa_query.Encode())
+	fa_uri, err := url.Parse(*findingaid_uri)
 
-	fa, err := repo.NewIndexer(ctx, fa_uri)
+	if err != nil {
+		log.Fatalf("Failed to parse findingaid URI, %v", err)
+	}
+
+	fa_q := fa_uri.Query()
+
+	if fa_q.Get("cache") == "{cache_uri}" {
+		fa_q["cache"] = []string{*cache_uri}
+	}
+
+	if fa_q.Get("iterator") == "{iterator_uri}" {
+		fa_q["iterator"] = []string{*iterator_uri}
+	}
+
+	if fa_q.Get("iterator") == "" {
+		log.Fatalf("Missing '-iterator-uri' flag.")
+	}
+
+	fa_uri.RawQuery = fa_q.Encode()
+
+
+	fa, err := repo.NewIndexer(ctx, fa_uri.String())
 
 	if err != nil {
 		log.Fatal("Failed to create finding aid indexer, %v", err)
