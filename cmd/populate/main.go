@@ -99,7 +99,7 @@ func main() {
 
 	fa_uri.RawQuery = fa_q.Encode()
 
-
+	log.Println(fa_uri.String())
 	fa, err := repo.NewIndexer(ctx, fa_uri.String())
 
 	if err != nil {
