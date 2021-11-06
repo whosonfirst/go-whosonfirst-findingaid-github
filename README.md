@@ -4,7 +4,7 @@ Go package providing tools and methods for working with go-whosonfirst-findingai
 
 ## Important
 
-Work in progress. Documentation to follow.
+This package has been deprecated and will no longer be updated.
 
 ## Example
 
